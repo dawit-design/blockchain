@@ -1,5 +1,21 @@
 function Blockchain() {
     this.chain = [];
-    this.newTransaction = [];
-    
+    this.newTransactions = [];
+
+}
+
+Blockchain.prototype.createNeWBlock = function(nonce, previousBlockHash, hash){
+    const newBlock = {
+        index: this.chain.length + 1,
+        timestamp: Date.now(),
+        transaction: this.newTransactions,
+        nonce: nonce,
+        hash: hash,
+        previousBlockHash: previousBlockHash,
+    };
+
+    this.newTransactions = [];
+    this.chain.push(newBlock);
+
+    return newBlock;
 }
